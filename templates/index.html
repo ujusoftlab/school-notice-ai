@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>가정통신문 생성기</title>
+  <style>
+    textarea {
+      width: 400px;
+      height: 120px;
+      vertical-align: top;
+      resize: vertical;
+    }
+    .label {
+      display: inline-block;
+      width: 140px;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .radio-options {
+      display: flex;
+      gap: 12px;
+      padding-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📄 가정통신문 생성</h1>
+  <form id="noticeForm" action="/" method="post">
+
+    <!-- 기본 항목들 -->
+    <div class="input-group">
+      <input type="checkbox" id="check_name" />
+      <span class="label">이름:</span>
+      <input type="text" name="name" />
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_grade" />
+      <span class="label">학년:</span>
+      <select name="grade">
+        <option value="">선택</option>
+        <option>6세</option><option>7세</option>
+        <option>초1</option><option>초2</option><option>초3</option>
+        <option>초4</option><option>초5</option><option>초6</option>
+        <option>중1</option><option>중2</option><option>중3</option>
+        <option>고1</option><option>고2</option><option>고3</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_class" />
+      <span class="label">수업:</span>
+      <input type="text" name="class" />
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_date" />
+      <span class="label">날짜:</span>
+      <input type="date" name="date" />
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_year" />
+      <span class="label">제목:</span>
+      <select name="year">
+        <script>
+          const now = new Date();
+          for (let y = now.getFullYear(); y <= now.getFullYear() + 5; y++) {
+            document.write(`<option ${y === now.getFullYear() ? 'selected' : ''}>${y}</option>`);
+          }
+        </script>
+      </select>
+      <select name="season">
+        <option>봄</option><option>여름</option><option>가을</option><option>겨울</option>
+      </select>
+      <input type="text" name="title" placeholder="제목 텍스트 입력" />
+    </div>
+
+    <!-- 평가 항목들 -->
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_participation" />
+      <span class="label">참여도</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_participation" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_participation" value="조금">조금</label>
+        <label><input type="radio" name="eval_participation" value="보통">보통</label>
+        <label><input type="radio" name="eval_participation" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_participation" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_understanding" />
+      <span class="label">이해도</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_understanding" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_understanding" value="조금">조금</label>
+        <label><input type="radio" name="eval_understanding" value="보통">보통</label>
+        <label><input type="radio" name="eval_understanding" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_understanding" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_computer" />
+      <span class="label">컴퓨터 사용능력</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_computer" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_computer" value="조금">조금</label>
+        <label><input type="radio" name="eval_computer" value="보통">보통</label>
+        <label><input type="radio" name="eval_computer" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_computer" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_debug" />
+      <span class="label">디버깅</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_debug" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_debug" value="조금">조금</label>
+        <label><input type="radio" name="eval_debug" value="보통">보통</label>
+        <label><input type="radio" name="eval_debug" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_debug" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_application" />
+      <span class="label">응용력</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_application" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_application" value="조금">조금</label>
+        <label><input type="radio" name="eval_application" value="보통">보통</label>
+        <label><input type="radio" name="eval_application" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_application" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_eval_communication" />
+      <span class="label">의사소통능력</span>
+      <div class="radio-options">
+        <label><input type="radio" name="eval_communication" value="전혀">전혀</label>
+        <label><input type="radio" name="eval_communication" value="조금">조금</label>
+        <label><input type="radio" name="eval_communication" value="보통">보통</label>
+        <label><input type="radio" name="eval_communication" value="좋음">좋음</label>
+        <label><input type="radio" name="eval_communication" value="매우 좋음">매우 좋음</label>
+      </div>
+    </div>
+
+    <!-- 본문 & 향후 일정 -->
+    <div class="input-group">
+      <input type="checkbox" id="check_body" />
+      <span class="label">본문:</span>
+      <textarea name="body" rows="8"></textarea>
+    </div>
+
+    <div class="input-group">
+      <input type="checkbox" id="check_event" />
+      <span class="label">향후 일정 안내:</span>
+      <textarea name="event" rows="4"></textarea>
+    </div>
+
+    <div class="input-group">
+      <button type="submit" name="generate_body" value="1">📥 Word 다운로드</button>
+      <button type="button" onclick="smartReset()">✅ 체크 제외 초기화</button>
+    </div>
+  </form>
+
+  <script>
+    function smartReset() {
+      const form = document.getElementById("noticeForm");
+      const elements = form.elements;
+
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        const name = el.name;
+
+        if (!name || el.type === "submit" || el.type === "button") continue;
+
+        const isTitleGroup = ["year", "season", "title"].includes(name);
+        const checkEl = isTitleGroup
+          ? document.getElementById("check_year")
+          : document.getElementById("check_" + name);
+
+        const shouldReset = !(checkEl && checkEl.checked);
+
+        if (shouldReset) {
+          if (el.tagName === "SELECT") {
+            el.selectedIndex = 0;
+          } else if (el.type === "radio" || el.type === "checkbox") {
+            el.checked = false;
+          } else {
+            el.value = "";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
